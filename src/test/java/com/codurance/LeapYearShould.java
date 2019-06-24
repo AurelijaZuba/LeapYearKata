@@ -16,4 +16,10 @@ public class LeapYearShould {
         LeapYear leapYear = new LeapYear();
         assertThat(leapYear.isLeapYear(1996)).isEqualTo(true);
     }
+
+    @Test
+    void return_true_if_divisible_by_400() {
+        LeapYear leapYear = new LeapYear();
+        assertThat(leapYear.isLeapYear(1600)).isEqualTo(true);
+    }
 }
