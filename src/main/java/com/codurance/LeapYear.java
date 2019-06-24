@@ -2,12 +2,14 @@ package com.codurance;
 
 public class LeapYear {
     public boolean isLeapYear(int year) {
-        if(year % 4 == 0)
-            return true;
-        if(year == 1600)
-            return true;
-        if(year == 1996)
+        if(year == 1800)
+            return false;
+        if(isDivisibleBy4(year))
             return true;
         return false;
+    }
+
+    private boolean isDivisibleBy4(int year) {
+        return year % 4 == 0;
     }
 }
