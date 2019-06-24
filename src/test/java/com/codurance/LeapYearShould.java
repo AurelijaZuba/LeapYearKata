@@ -1,25 +1,28 @@
 package com.codurance;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class LeapYearShould {
-    @Test
-    void return_false_if_not_divisible_by_4() {
-        LeapYear leapYear = new LeapYear();
-        assertThat(leapYear.isLeapYear(1997)).isEqualTo(false);
+
+    private LeapYear leapYear;
+
+    @BeforeEach
+    void setUp() {
+        leapYear = new LeapYear();
     }
 
-    @Test
-    void return_true_if_divisible_by_4() {
-        LeapYear leapYear = new LeapYear();
-        assertThat(leapYear.isLeapYear(1996)).isEqualTo(true);
-    }
-
-    @Test
-    void return_true_if_divisible_by_400() {
-        LeapYear leapYear = new LeapYear();
-        assertThat(leapYear.isLeapYear(1600)).isEqualTo(true);
+    @ParameterizedTest
+    @CsvSource({
+            "1997, false",
+            "1996, true",
+            "1600, true"
+    })
+    void identify_leap_year(int year, boolean expected) {
+        assertThat(leapYear.isLeapYear(year)).isEqualTo(expected);
     }
 }
