@@ -21,7 +21,7 @@ public class LeapYearShould {
             "1997, false",
             "1996, true",
             "1600, true",
-            "2000, true"
+            "200, true"
     })
     void identify_leap_year(int year, boolean expected) {
         assertThat(leapYear.isLeapYear(year)).isEqualTo(expected);
